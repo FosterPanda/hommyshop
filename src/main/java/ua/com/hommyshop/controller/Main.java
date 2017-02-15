@@ -23,9 +23,9 @@ public class Main {
 		UserService userService = (UserService) context.getBean(UserServiceImp.class);
 		
 
-		Brand brand = brandService.findByName("ADIDAS");
+		Brand brand = brandService.findByName("Zara");
 
-		Clothing clothing = clothingService.findByName("MR100");
+		Clothing clothing = clothingService.findByName("Convers");
 
 		clothing.setBrand(brand);
 
