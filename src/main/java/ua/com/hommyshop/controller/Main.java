@@ -5,10 +5,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import ua.com.hommyshop.entity.Brand;
 import ua.com.hommyshop.entity.Clothing;
-import ua.com.hommyshop.service.BrandService;
-import ua.com.hommyshop.service.ClothingService;
-import ua.com.hommyshop.serviceImp.BrandServiceImp;
-import ua.com.hommyshop.serviceImp.ClothingServiceImp;
+import ua.com.hommyshop.service.*;
+import ua.com.hommyshop.serviceImp.*;
 
 public class Main {
 
@@ -17,18 +15,21 @@ public class Main {
 		ConfigurableApplicationContext context = new ClassPathXmlApplicationContext("/META-INF/appContext.xml");
 
 		BrandService brandService = (BrandService) context.getBean(BrandServiceImp.class);
-
-		Brand brand = brandService.findByName("Zara");
-
+		CategoryService categoryService = (CategoryService) context.getBean(CategoryServiceImp.class);
 		ClothingService clothingService = (ClothingService) context.getBean(ClothingServiceImp.class);
+		ColorService colorService = (ColorService) context.getBean(ColorServiceImp.class);
+		SizeService Size = (SizeService) context.getBean(SizeServiceImp.class);
+		SubcategoryService subcategoryService = (SubcategoryService) context.getBean(SubcategoryServiceImp.class);
+		UserService userService = (UserService) context.getBean(UserServiceImp.class);
+		
 
-		Clothing clothing = clothingService.findByName("boots");
+		Brand brand = brandService.findByName("ADIDAS");
+
+		Clothing clothing = clothingService.findByName("MR100");
 
 		clothing.setBrand(brand);
 
 		clothingService.update(clothing);
-
-		System.out.println(brand.getClothes());
 
 		context.close();
 
